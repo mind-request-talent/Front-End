@@ -1,95 +1,36 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="mt-4 align-middle">
+      <div className="card mb-2">
+        <div className="card-body mx-auto">
+          <h5 className="card-title">Vacantes en proceso: 2</h5>
+          <h5 className="card-text mb-2">Vacantes en candidato ofertado: 2</h5>
+          <h5 className="card-text">Vacantes en proceso de ingreso a la empresa: 2</h5>
+          <h5 className="card-text">Vacantes en onbording mind teams: 2</h5>
+          <h5 className="card-text">Vacantes en cuenta: 2</h5>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="card mb-3">
+        <div className="card-body mx-auto">
+          <h5 className="card-title">Vacantes JR: 0</h5>
+          <h5 className="card-text mb-2">Vacantes MID: 2</h5>
+          <h5 className="card-text">Vacantes SR: 0</h5>
+          <a href="#" className="card-link"></a>
+          <a href="#" className="card-link"></a>
+        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="card">
+        <div className="card-body mx-auto">
+          <h5 className="card-title">Tecnología principal más usada: JavaScript</h5>
+          <h5 className="card-text mb-2">Tecnología secundaria más usada: Python</h5>
+          <p className="card-text"></p>
+          <a href="#" className="card-link"></a>
+          <a href="#" className="card-link"></a>
+        </div>
       </div>
-    </main>
+    </div>
   )
 }
