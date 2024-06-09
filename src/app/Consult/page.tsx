@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 export default function Home() {
-  const router = useRouter();
 
   async function SendData(e: any){
     e.preventDefault();
@@ -35,7 +34,6 @@ export default function Home() {
         client: data.client, client_id: data.client_id, sale_rate: data.sale_rate, start_date: data.start_date,
         vacancy_status: data.vacancy_status, notes: data.General_notes
       })
-      console.log(response)
       window.location.reload();
     } catch (error) {
       alert(error);
