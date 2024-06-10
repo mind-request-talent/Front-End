@@ -12,6 +12,8 @@ export default function Home() {
   const [jr, setJr] = useState(0);
   const [mid, setMid] = useState(0);
   const [sr, setSr] = useState(0);
+  const [mainTech, setMainTech] = useState();
+  const [secondTech, setSecondTech] = useState();
 
   useEffect(() => {
     ObtainAvailable()
@@ -20,12 +22,16 @@ export default function Home() {
     ObtainJR()
     ObtainMID()
     ObtainSR()
+    main_tech()
+    second_tech()
     inProcess
     available
     taken
     jr
     mid
     sr
+    mainTech
+    secondTech
   } , []);
 
 
@@ -83,6 +89,16 @@ export default function Home() {
     }
   }
 
+  async function main_tech(e: any){
+    const response = await axios.get("http://localhost:3001/vacancies/main_tech")
+    setMainTech(response.data)
+  }
+
+  async function second_tech(e: any){
+    const response = await axios.get("http://localhost:3001/vacancies/second_tech")
+    setSecondTech(response.data)
+  }
+
 
   return (
     <div className="mt-4 align-middle">
@@ -104,8 +120,8 @@ export default function Home() {
       </div>
       <div className="card">
         <div className="card-body mx-auto">
-          <h5 className="card-title">Tecnología principal más usada: JavaScript</h5>
-          <h5 className="card-text mb-2">Tecnología secundaria más usada: Python</h5>
+          <h5 className="card-title">Tecnología principal más usada: {mainTech}</h5>
+          <h5 className="card-text mb-2">Tecnología secundaria más usada: {secondTech}</h5>
           <p className="card-text"></p>
           <a href="#" className="card-link"></a>
           <a href="#" className="card-link"></a>
