@@ -26,14 +26,14 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/clients/byEmail', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/clients/byEmail`, {
         email: data.client
       })
       let client_id = response.data.id
       
       if (response.data != "No se encontró el cliente") {
         try {
-          const response = await axios.post('http://localhost:3001/vacancies/', {
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/`, {
             vacancy_name: data.vacancy_name, role: data.role, experience_level: data.experience_level,
             main_tech: data.main_tech, experience_required_for_main_tech: data.experience_required_for_main_tech,
             second_tech: data.second_tech, experience_required_for_second_tech: data.experience_required_for_second_tech,

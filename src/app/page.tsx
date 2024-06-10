@@ -36,7 +36,7 @@ export default function Home() {
 
 
   async function ObtainAvailable(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainInProcess")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainInProcess`)
     if(response.data.length == 0){
       setAvailable(0)
     }else{
@@ -45,7 +45,7 @@ export default function Home() {
   }
 
   async function ObtainInProcess(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainAvailable")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainAvailable`)
     if(response.data.length == 0){
       setInProcess(0)
     }else{
@@ -54,7 +54,7 @@ export default function Home() {
   }
 
   async function ObtainTaken(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainTaken")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainTaken`)
     if(response.data.length == 0){
       setTaken(0)
     }else{
@@ -63,7 +63,7 @@ export default function Home() {
   }
 
   async function ObtainJR(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainJR")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainJR`)
     if(response.data.length == 0){
       setJr(0)
     }else{
@@ -72,7 +72,7 @@ export default function Home() {
   }
 
   async function ObtainMID(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainMID")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainMID`)
     if(response.data.length == 0){
       setMid(0)
     }else{
@@ -81,7 +81,7 @@ export default function Home() {
   }
 
   async function ObtainSR(){
-    const response = await axios.get("http://localhost:3001/vacancies/obtainSR")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainSR`)
     if(response.data.length == 0){
       setSr(0)
     }else{
@@ -90,12 +90,12 @@ export default function Home() {
   }
 
   async function main_tech(){
-    const response = await axios.get("http://localhost:3001/vacancies/main_tech")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/main_tech`)
     setMainTech(response.data)
   }
 
   async function second_tech(){
-    const response = await axios.get("http://localhost:3001/vacancies/second_tech")
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/second_tech`)
     setSecondTech(response.data)
   }
 
