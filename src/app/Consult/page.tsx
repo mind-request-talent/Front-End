@@ -41,15 +41,14 @@ export default function Home() {
             vacancy_status: data.vacancy_status, notes: data.General_notes
           })
           window.location.reload();
+
+          alert("La vacante ha sido creada")
         } catch (error) {
           alert(error);
         }
       }else{
         alert("El correo no existe o está mal escrito")
       }
-
-      alert("La vacante ha sido creada")
-
     } catch (error) {
       alert(error);
     } 

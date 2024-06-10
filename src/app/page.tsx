@@ -35,7 +35,7 @@ export default function Home() {
   } , []);
 
 
-  async function ObtainAvailable(e: any){
+  async function ObtainAvailable(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainInProcess")
     if(response.data.length == 0){
       setAvailable(0)
@@ -44,7 +44,7 @@ export default function Home() {
     }
   }
 
-  async function ObtainInProcess(e: any){
+  async function ObtainInProcess(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainAvailable")
     if(response.data.length == 0){
       setInProcess(0)
@@ -53,7 +53,7 @@ export default function Home() {
     }
   }
 
-  async function ObtainTaken(e: any){
+  async function ObtainTaken(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainTaken")
     if(response.data.length == 0){
       setTaken(0)
@@ -62,7 +62,7 @@ export default function Home() {
     }
   }
 
-  async function ObtainJR(e: any){
+  async function ObtainJR(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainJR")
     if(response.data.length == 0){
       setJr(0)
@@ -71,7 +71,7 @@ export default function Home() {
     }
   }
 
-  async function ObtainMID(e: any){
+  async function ObtainMID(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainMID")
     if(response.data.length == 0){
       setMid(0)
@@ -80,7 +80,7 @@ export default function Home() {
     }
   }
 
-  async function ObtainSR(e: any){
+  async function ObtainSR(){
     const response = await axios.get("http://localhost:3001/vacancies/obtainSR")
     if(response.data.length == 0){
       setSr(0)
@@ -89,12 +89,12 @@ export default function Home() {
     }
   }
 
-  async function main_tech(e: any){
+  async function main_tech(){
     const response = await axios.get("http://localhost:3001/vacancies/main_tech")
     setMainTech(response.data)
   }
 
-  async function second_tech(e: any){
+  async function second_tech(){
     const response = await axios.get("http://localhost:3001/vacancies/second_tech")
     setSecondTech(response.data)
   }

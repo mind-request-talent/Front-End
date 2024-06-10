@@ -10,7 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function Home() {
 
-  const [Data, setdata] = useState();
+  const [Data, setdata] = useState(Array<any>());
   const [ID, setID] = useState();
   const [show, setShow] = useState(false);
   const [Page, setPage] = useState(0);
@@ -103,7 +103,7 @@ export default function Home() {
           <blockquote className="blockquote">
             <div className="d-flex">
               <p className="col-4">◇ Nombre: {data.vacancy_name}.</p>
-              <p className="col-4">◇ Precio: {data.sale_rate}.</p>
+              <p className="col-4">◇ Rango salarial: {data.sale_rate}.</p>
             </div>
             <div className="d-flex">
               <p className="col-4">◇ Rol: {data.role}.</p>
@@ -112,11 +112,11 @@ export default function Home() {
             </div>
             <div className="d-flex">
               <p className="col-5">◇ Tecnologia principal: {data.main_tech}.</p>
-              <p className="col-5">Años usada: {data.experience_required_for_main_tech}</p>
+              <p className="col-5">Años de experiencia: {data.experience_required_for_main_tech}</p>
             </div>
             <div className="d-flex">
               <p className="col-5">◇ Tecnologia Secundaria: {data.second_tech}.</p>
-              <p className="col-5">Años usada: {data.experience_required_for_second_tech}</p>
+              <p className="col-5">Años de experiencia: {data.experience_required_for_second_tech}</p>
             </div>
             <p>◇ Notas generales: {data.notes}</p>
           </blockquote>
