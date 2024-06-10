@@ -4,6 +4,7 @@ import styles from "../page.module.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+const APIURL = process.env.NEXT_PUBLIC_API_URL
 
 export default function Home() {
 
@@ -26,14 +27,14 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/clients/byEmail`, {
+      const response = await axios.post(`${APIURL}/clients/byEmail`, {
         email: data.client
       })
       let client_id = response.data.id
       
       if (response.data != "No se encontró el cliente") {
         try {
-          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/`, {
+          const response = await axios.post(`${APIURL}/vacancies/`, {
             vacancy_name: data.vacancy_name, role: data.role, experience_level: data.experience_level,
             main_tech: data.main_tech, experience_required_for_main_tech: data.experience_required_for_main_tech,
             second_tech: data.second_tech, experience_required_for_second_tech: data.experience_required_for_second_tech,

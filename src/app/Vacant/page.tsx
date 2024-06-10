@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+const APIURL = process.env.NEXT_PUBLIC_API_URL
 
 export default function Home() {
 
@@ -24,7 +25,7 @@ export default function Home() {
   } , []);
 
   async function ObtainData(){
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainData`)
+    const response = await axios.post(`${APIURL}/vacancies/obtainData`)
     const responseData = response.data;
     
     setdata(responseData);
@@ -43,7 +44,7 @@ export default function Home() {
     const vacancy_status = vacancy_Status.value;
       
     try {
-      const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/${ID}`, {
+      const response = await axios.put(`${APIURL}/vacancies/${ID}`, {
         vacancy_status: vacancy_status
       })
       window.location.reload();
@@ -57,10 +58,10 @@ export default function Home() {
     setPage(Page + 2)
     let skip = Page
     if(Page != 0){
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainData`, { skip: skip })
+      const response = await axios.post(`${APIURL}/vacancies/obtainData`, { skip: skip })
       if(response.data.length == 0){
         setPage(Page - 2)
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainData`, { skip: skip })
+        const response = await axios.post(`${APIURL}/vacancies/obtainData`, { skip: skip })
         const responseData = response.data;
         setdata(responseData);
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -76,13 +77,13 @@ export default function Home() {
     if(Page != 0){
       setPage(Page - 2)
       let skip = Page
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainData`, { skip: skip })
+      const response = await axios.post(`${APIURL}/vacancies/obtainData`, { skip: skip })
       const responseData = response.data;
       setdata(responseData);
       window.scrollTo({ top: 0, behavior: 'instant' });
     }else{
       let skip = 0
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/vacancies/obtainData`, { skip: skip })
+      const response = await axios.post(`${APIURL}/vacancies/obtainData`, { skip: skip })
       const responseData = response.data;
       setdata(responseData);
       window.scrollTo({ top: 0, behavior: 'instant' });
