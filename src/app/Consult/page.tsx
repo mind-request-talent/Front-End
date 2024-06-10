@@ -18,8 +18,7 @@ export default function Home() {
       experience_required_for_main_tech: Number(e.target.Principal_tech_use_time.value),
       second_tech: String(e.target.Secondary_tech.value),
       experience_required_for_second_tech: Number(e.target.Secondary_tech_use_time.value),
-      client: String(e.target.Client.value),
-      client_id: String(e.target.Client_id.value),
+      client: String(e.target.Client_email.value),
       sale_rate: Number(e.target.Sale_rate.value),
       start_date: String(e.target.Date.value),
       vacancy_status: String(e.target.vacancy_status.value),
@@ -27,18 +26,33 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/vacancies/', {
-        vacancy_name: data.vacancy_name, role: data.role, experience_level: data.experience_level,
-        main_tech: data.main_tech, experience_required_for_main_tech: data.experience_required_for_main_tech,
-        second_tech: data.second_tech, experience_required_for_second_tech: data.experience_required_for_second_tech,
-        client: data.client, client_id: data.client_id, sale_rate: data.sale_rate, start_date: data.start_date,
-        vacancy_status: data.vacancy_status, notes: data.General_notes
+      const response = await axios.post('http://localhost:3001/clients/byEmail', {
+        email: data.client
       })
-      window.location.reload();
+      let client_id = response.data.id
+      
+      if (response.data != "No se encontró el cliente") {
+        try {
+          const response = await axios.post('http://localhost:3001/vacancies/', {
+            vacancy_name: data.vacancy_name, role: data.role, experience_level: data.experience_level,
+            main_tech: data.main_tech, experience_required_for_main_tech: data.experience_required_for_main_tech,
+            second_tech: data.second_tech, experience_required_for_second_tech: data.experience_required_for_second_tech,
+            client_id: client_id, sale_rate: data.sale_rate, start_date: data.start_date,
+            vacancy_status: data.vacancy_status, notes: data.General_notes
+          })
+          window.location.reload();
+        } catch (error) {
+          alert(error);
+        }
+      }else{
+        alert("El correo no existe o está mal escrito")
+      }
+
+      alert("La vacante ha sido creada")
+
     } catch (error) {
       alert(error);
-    }
-    
+    } 
   }
 
 
@@ -87,12 +101,8 @@ export default function Home() {
         <input type="text" className="form-control" id="Secondary_tech_use_time" required />
       </div>
       <div className="form-group mb-3">
-        <label>Cliente que solicito el perfil</label>
-        <input type="text" className="form-control" id="Client" required />
-      </div>
-      <div className="form-group mb-3">
-        <label>Id del cliente</label>
-        <input type="text" className="form-control" id="Client_id" required />
+        <label>Correo del cliente que solicito el perfil</label>
+        <input type="email" className="form-control" id="Client_email" required />
       </div>
       <div className="form-group mb-3">
         <label>El rate de venta</label>
