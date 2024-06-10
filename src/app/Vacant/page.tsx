@@ -108,7 +108,7 @@ export default function Home() {
             <div className="d-flex">
               <p className="col-4">◇ Rol: {data.role}.</p>
               <p className="col-4">◇ Nivel de experiencia: {data.experience_level}.</p>
-              <p className="col-4">◇ Fecha de creacion: {data.start_date}</p>
+              <p className="col-4">◇ Fecha de creacion: {data.start_date.slice(0,-14)}</p>
             </div>
             <div className="d-flex">
               <p className="col-5">◇ Tecnologia principal: {data.main_tech}.</p>
