@@ -17,14 +17,7 @@ export default function Home() {
   const [secondTech, setSecondTech] = useState();
 
   useEffect(() => {
-    ObtainAvailable()
-    ObtainInProcess()
-    ObtainTaken()
-    ObtainJR()
-    ObtainMID()
-    ObtainSR()
-    main_tech()
-    second_tech()
+    ObtainAllData()
     inProcess
     available
     taken
@@ -36,70 +29,19 @@ export default function Home() {
   } , []);
 
 
-  async function ObtainAvailable(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainInProcess`)
-    if(response.data.length == 0){
-      setAvailable(0)
-    }else{
-      setAvailable(response.data)
-    }
-  }
+  async function ObtainAllData(){
+    const response = await axios.get(`${APIURL}/vacancies/specs`)
 
-  async function ObtainInProcess(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainAvailable`)
-    if(response.data.length == 0){
-      setInProcess(0)
-    }else{
-      setInProcess(response.data)
-    }
+    setAvailable(response.data.available_vacancies)
+    setInProcess(response.data.in_process_vacancies)
+    setTaken(response.data.taken_vacancies)
+    setJr(response.data.jr_vacancies)
+    setMid(response.data.mid_vacancies)
+    setSr(response.data.sr_vacancies)
+    setMainTech(response.data.most_frequent_main_tech)
+    setSecondTech(response.data.most_frequent_second_tech)
+    
   }
-
-  async function ObtainTaken(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainTaken`)
-    if(response.data.length == 0){
-      setTaken(0)
-    }else{
-      setTaken(response.data)
-    }
-  }
-
-  async function ObtainJR(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainJR`)
-    if(response.data.length == 0){
-      setJr(0)
-    }else{
-      setJr(response.data)
-    }
-  }
-
-  async function ObtainMID(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainMID`)
-    if(response.data.length == 0){
-      setMid(0)
-    }else{
-      setMid(response.data)
-    }
-  }
-
-  async function ObtainSR(){
-    const response = await axios.get(`${APIURL}/vacancies/obtainSR`)
-    if(response.data.length == 0){
-      setSr(0)
-    }else{
-      setSr(response.data)
-    }
-  }
-
-  async function main_tech(){
-    const response = await axios.get(`${APIURL}/vacancies/main_tech`)
-    setMainTech(response.data)
-  }
-
-  async function second_tech(){
-    const response = await axios.get(`${APIURL}/vacancies/second_tech`)
-    setSecondTech(response.data)
-  }
-
 
   return (
     <div className="mt-4 align-middle">
